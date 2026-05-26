@@ -456,7 +456,7 @@ footer::before { content:''; position:absolute; top:0; left:44px; right:44px; he
   </div>
   <div class="about-right reveal-r">
     <div class="about-frame">
-      <img src="images/store.jpg" alt="Mercyked Collections Store" onerror="this.style.display='none'">
+      <img src="store.jpg" alt="Mercyked Collections Store" onerror="this.style.display='none'">
       <div class="about-frame-ph">Mercyked<br>Collections</div>
     </div>
     <div class="about-border"></div>
@@ -499,7 +499,7 @@ footer::before { content:''; position:absolute; top:0; left:44px; right:44px; he
 <!-- CAC STRIP -->
 <section class="cac-strip reveal" id="cac">
   <div class="cac-img-full">
-    <img src="images/cac-certificate.jpg" alt="CAC Certificate" onload="this.classList.add('loaded');this.nextElementSibling.style.display='none';" onerror="this.style.display='none'">
+    <img src="cac-certificate.jpg" alt="CAC Certificate" onload="this.classList.add('loaded');this.nextElementSibling.style.display='none';" onerror="this.style.display='none'">
     <div class="cac-ph">
       <span class="cac-ph-icon">🏛️</span>
       <p class="cac-ph-text">CAC Certificate</p>
@@ -757,7 +757,7 @@ function renderCartDrawer(){
   }
   el.innerHTML = cart.map(item=>`
     <div class="ci">
-      <img class="ci-img" src="images/${item.img}" alt="${item.name}" onerror="this.style.opacity='0'">
+      <img class="ci-img" src="${item.img}" alt="${item.name}" onerror="this.style.opacity='0'">
       <div class="ci-info">
         <div class="ci-cat">${item.cat}</div>
         <div class="ci-name">${item.name}</div>
@@ -786,7 +786,7 @@ function renderCartDrawer(){
           const ctaHTML = inCart
             ? `<div class="rel-qty"><button class="rel-qb" onclick="changeSugQty('${safeName}',-1,this)">−</button><span class="rel-qv">${inCart.qty} yard${inCart.qty>1?'s':''} in cart</span><button class="rel-qb" onclick="changeSugQty('${safeName}',1,this)">+</button></div>`
             : `<button class="rel-add-btn" onclick="addSugToCart('${safeName}',this)">Add to Cart</button>`;
-          return `<div class="cart-sug-card" data-sug-name="${safeName}"><img class="cart-sug-img" src="images/${s.img}" alt="${s.name}" onerror="this.style.opacity='0'"><div class="cart-sug-info"><div class="cart-sug-name">${s.name}</div><div class="cart-sug-price">${s.price}</div><div class="cart-sug-cta">${ctaHTML}</div></div></div>`;
+          return `<div class="cart-sug-card" data-sug-name="${safeName}"><img class="cart-sug-img" src="${s.img}" alt="${s.name}" onerror="this.style.opacity='0'"><div class="cart-sug-info"><div class="cart-sug-name">${s.name}</div><div class="cart-sug-price">${s.price}</div><div class="cart-sug-cta">${ctaHTML}</div></div></div>`;
         }).join('')}
       </div>
     `;
@@ -865,7 +865,7 @@ function renderProducts(){
     card.innerHTML = `
       <div class="pc-img-box">
         <div class="pc-grad" style="background:${grad}"></div>
-        <img class="pc-img" src="images/${p.img}" alt="${p.name}" onerror="this.style.opacity='0'">
+        <img class="pc-img" src="${p.img}" alt="${p.name}" onerror="this.style.opacity='0'">
         ${lace}
       </div>
       <div class="pc-info">
@@ -950,7 +950,7 @@ function openPop(name){
         : `<button class="rel-add-btn" onclick="addRelatedToCart('${safeName}',this)">Add to Cart</button>`;
       return `
         <div class="rel-card" data-rel-name="${safeName}">
-          <img class="rel-img" src="images/${r.img}" alt="${r.name}" onerror="this.style.opacity='0'">
+          <img class="rel-img" src="${r.img}" alt="${r.name}" onerror="this.style.opacity='0'">
           <div class="rel-info">
             <div class="rel-name">${r.name}</div>
             <div class="rel-price-sm">${r.price}</div>
@@ -979,7 +979,7 @@ function rerenderRelated(){
     const ctaHTML = inCart
       ? `<div class="rel-qty"><button class="rel-qb" onclick="changeRelatedQty('${safeName}',-1,this)">−</button><span class="rel-qv">${inCart.qty} yard${inCart.qty>1?'s':''} in cart</span><button class="rel-qb" onclick="changeRelatedQty('${safeName}',1,this)">+</button></div>`
       : `<button class="rel-add-btn" onclick="addRelatedToCart('${safeName}',this)">Add to Cart</button>`;
-    return `<div class="rel-card" data-rel-name="${safeName}"><img class="rel-img" src="images/${r.img}" alt="${r.name}" onerror="this.style.opacity='0'"><div class="rel-info"><div class="rel-name">${r.name}</div><div class="rel-price-sm">${r.price}</div><div class="rel-cta">${ctaHTML}</div></div></div>`;
+    return `<div class="rel-card" data-rel-name="${safeName}"><img class="rel-img" src="${r.img}" alt="${r.name}" onerror="this.style.opacity='0'"><div class="rel-info"><div class="rel-name">${r.name}</div><div class="rel-price-sm">${r.price}</div><div class="rel-cta">${ctaHTML}</div></div></div>`;
   }).join('');
 }
 
