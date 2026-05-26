@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercyked Collections — Home of Aso-Ebi Fabric in Lagos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Raleway:wght@200;300;400;500&display=swap');
+
+:root {
+  --black: #06040a;
+  --deep-purple: #130a24;
+  --mid-purple: #1e1035;
+  --gold: #c9a84c;
+  --gold-light: #e2c068;
+  --white: #f7f2ea;
+  --grey: #8a8090;
+  --grey-light: #b0a8b8;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--black); color:var(--white); font-family:'Raleway',sans-serif; font-weight:300; overflow-x:hidden; }
+
+.cursor,.cursor-ring { display:none; pointer-events:none; position:fixed; z-index:9999; transform:translate(-50%,-50%); }
+@media(pointer:fine){
+  body { cursor:none; }
+  .cursor { display:block; width:10px; height:10px; background:var(--gold); border-radius:50%; transition:width .2s,height .2s; }
+  .cursor-ring { display:block; width:34px; height:34px; border:1px solid rgba(201,168,76,.5); border-radius:50%; transition:all .12s ease; }
+  a,button { cursor:none; }
+}
+
+body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:.5; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:500; padding:22px 44px; display:flex; justify-content:space-between; align-items:center; background:linear-gradient(to bottom,rgba(6,4,10,.97) 60%,transparent); }
+.nav-logo { font-family:'Playfair Display',serif; font-size:1.25rem; letter-spacing:.12em; color:var(--gold); font-weight:400; }
+.nav-links { display:flex; gap:36px; list-style:none; }
+.nav-links a { color:var(--grey-light); text-decoration:none; font-size:.6rem; letter-spacing:.28em; text-transform:uppercase; transition:color .3s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-cta { font-size:.58rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); padding:10px 22px; text-decoration:none; transition:all .3s; }
+.nav-cta:hover { background:var(--gold); color:var(--black); }
+@media(max-width:768px){ nav{padding:18px 20px;} .nav-links{display:none;} }
+
+/* HERO */
+.hero { min-height:100vh; position:relative; display:flex; align-items:flex-end; padding:120px 44px 80px; overflow:hidden; }
+.hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 65% 40%,rgba(80,30,130,.35) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 20% 75%,rgba(201,168,76,.08) 0%,transparent 55%),linear-gradient(160deg,#06040a 0%,#130a24 55%,#06040a 100%); }
+.hero-lace { position:absolute; inset:0; opacity:.05; background-image:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 0,transparent 50%),repeating-linear-gradient(-45deg,var(--gold) 0,var(--gold) 1px,transparent 0,transparent 50%); background-size:48px 48px; }
+.hero-glow { position:absolute; top:15%; right:10%; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle,rgba(100,40,180,.18) 0%,transparent 70%); filter:blur(40px); }
+.hero-content { position:relative; z-index:2; max-width:660px; }
+.hero-eyebrow { font-size:.58rem; letter-spacing:.45em; text-transform:uppercase; color:var(--gold); margin-bottom:28px; display:flex; align-items:center; gap:14px; opacity:0; animation:fadeUp .9s ease .3s forwards; }
+.hero-eyebrow::before { content:''; width:40px; height:1px; background:var(--gold); flex-shrink:0; }
+.hero-title { font-family:'Playfair Display',serif; font-size:clamp(3.2rem,7.5vw,6.5rem); font-weight:400; line-height:.92; margin-bottom:36px; opacity:0; animation:fadeUp .9s ease .55s forwards; }
+.hero-title em { font-style:italic; color:var(--gold); }
+.hero-title .outline { -webkit-text-stroke:1px rgba(201,168,76,.5); color:transparent; }
+.hero-sub { font-size:.72rem; line-height:2.1; color:var(--grey-light); max-width:420px; margin-bottom:52px; opacity:0; animation:fadeUp .9s ease .75s forwards; }
+.hero-actions { display:flex; gap:20px; align-items:center; flex-wrap:wrap; opacity:0; animation:fadeUp .9s ease .95s forwards; }
+.btn-gold { background:var(--gold); color:var(--black); padding:15px 38px; font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; text-decoration:none; font-weight:500; font-family:'Raleway',sans-serif; transition:all .3s; border:none; display:inline-block; }
+.btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); }
+.btn-outline { color:var(--white); font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; text-decoration:none; opacity:.65; display:flex; align-items:center; gap:10px; transition:opacity .3s,gap .3s; }
+.btn-outline:hover { opacity:1; gap:18px; }
+.hero-stats { position:absolute; right:44px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:36px; opacity:0; animation:fadeIn 1s ease 1.2s forwards; z-index:2; }
+.h-stat { text-align:right; }
+.h-stat-val { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--gold); display:block; line-height:1; margin-bottom:4px; }
+.h-stat-label { font-size:.5rem; letter-spacing:.22em; text-transform:uppercase; color:var(--grey); }
+@media(max-width:768px){ .hero-stats{display:none;} .hero{padding:72px 20px 60px;align-items:center;} }
+
+/* MARQUEE */
+.marquee-wrap { overflow:hidden; padding:14px 0; border-top:1px solid rgba(201,168,76,.18); border-bottom:1px solid rgba(201,168,76,.18); background:var(--deep-purple); }
+.marquee-track { display:flex; white-space:nowrap; animation:marquee 28s linear infinite; }
+.m-item { font-size:.52rem; letter-spacing:.38em; text-transform:uppercase; color:var(--gold); padding:0 36px; flex-shrink:0; }
+.m-sep { color:rgba(201,168,76,.35); padding:0 4px; }
+
+/* ABOUT */
+.about { padding:110px 44px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.about-label { font-size:.54rem; letter-spacing:.4em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; display:block; }
+.about-title { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,4vw,3.6rem); font-weight:400; line-height:1.08; margin-bottom:28px; }
+.about-title em { font-style:italic; color:var(--gold); }
+.about-text { font-size:.72rem; line-height:2.2; color:var(--grey-light); margin-bottom:36px; }
+.about-badges { display:flex; flex-wrap:wrap; gap:12px; }
+.badge { border:1px solid rgba(201,168,76,.28); padding:8px 18px; font-size:.52rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); background:rgba(201,168,76,.05); }
+.about-frame { width:100%; aspect-ratio:3/4; background:linear-gradient(145deg,#1e0840 0%,#3d1280 50%,#1a0a30 100%); position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.about-frame img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+.about-frame-ph { font-family:'Playfair Display',serif; font-size:1.1rem; color:rgba(201,168,76,.2); text-align:center; font-style:italic; letter-spacing:.15em; line-height:2; z-index:1; }
+.about-frame::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(0deg,transparent,transparent 44px,rgba(201,168,76,.04) 44px,rgba(201,168,76,.04) 45px),repeating-linear-gradient(90deg,transparent,transparent 44px,rgba(201,168,76,.04) 44px,rgba(201,168,76,.04) 45px); z-index:0; }
+.about-right { position:relative; }
+.about-border { position:absolute; top:-14px; right:-14px; width:100%; height:100%; border:1px solid rgba(201,168,76,.2); pointer-events:none; }
+@media(max-width:768px){ .about{grid-template-columns:1fr;padding:72px 20px;gap:44px;} .about-right{display:none;} }
+
+/* COLLECTIONS */
+.collections { padding:0 44px 110px; }
+.sec-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; }
+.sec-label { font-size:.54rem; letter-spacing:.4em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+.sec-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,3rem); font-weight:400; line-height:1.1; }
+.sec-title em { font-style:italic; color:var(--gold); }
+@media(max-width:768px){ .collections{padding:0 20px 80px;} .sec-header{flex-direction:column;align-items:flex-start;gap:16px;} }
+
+/* SEARCH & FILTER */
+.catalog-controls { margin-bottom:44px; display:flex; flex-direction:column; gap:20px; }
+.search-wrap { position:relative; }
+.search-input { width:100%; background:rgba(255,255,255,.04); border:1px solid rgba(201,168,76,.2); color:var(--white); padding:14px 20px 14px 48px; font-size:.72rem; font-family:'Raleway',sans-serif; font-weight:300; outline:none; transition:border-color .3s; }
+.search-input:focus { border-color:var(--gold); }
+.search-input::placeholder { color:var(--grey); }
+.search-icon { position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--gold); font-size:.9rem; pointer-events:none; }
+.filter-wrap { display:flex; gap:10px; flex-wrap:wrap; }
+.filter-btn { background:transparent; border:1px solid rgba(201,168,76,.25); color:var(--grey-light); padding:8px 18px; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; font-family:'Raleway',sans-serif; transition:all .3s; cursor:pointer; white-space:nowrap; }
+.filter-btn:hover { border-color:var(--gold); color:var(--gold); }
+.filter-btn.active { background:var(--gold); color:var(--black); border-color:var(--gold); font-weight:500; }
+.results-count { font-size:.58rem; color:var(--grey); letter-spacing:.15em; margin-top:8px; }
+
+/* PRODUCT GRID */
+.product-grid { display:grid; grid-template-columns:1fr; gap:2px; }
+
+/* CARD WRAPPER — image + info stacked vertically */
+.pc { background:var(--deep-purple); cursor:pointer; display:flex; flex-direction:column; }
+.pc.hidden { display:none; }
+
+/* IMAGE BOX — full width, natural height, zero cropping */
+.pc-img-box { position:relative; width:100%; overflow:hidden; }
+.pc-img {
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  object-position:center top;
+  transition:transform .9s cubic-bezier(.25,.46,.45,.94);
+  position:relative;
+  z-index:1;
+}
+.pc:hover .pc-img { transform:scale(1.03); }
+
+/* Lace overlay — barely visible texture only */
+.pc-lace { position:absolute; inset:0; z-index:2; opacity:.05; pointer-events:none; }
+
+/* Hover shimmer — gold glow at bottom on hover only */
+.pc-img-box::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(201,168,76,.07) 0%, transparent 35%); opacity:0; transition:opacity .4s; z-index:3; pointer-events:none; }
+.pc:hover .pc-img-box::after { opacity:1; }
+
+/* Gradient fallback for missing images */
+.pc-img-box .pc-grad { position:absolute; inset:0; z-index:0; min-height:420px; }
+
+/* INFO PANEL — below the image, never on top of it */
+.pc-info { padding:20px 24px 26px; display:flex; flex-direction:column; gap:6px; background:var(--deep-purple); border-top:1px solid rgba(201,168,76,.12); }
+.pc-cat { font-size:.48rem; letter-spacing:.35em; text-transform:uppercase; color:var(--gold); opacity:.8; }
+.pc-name { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:400; line-height:1.2; color:var(--white); }
+.pc-price { font-size:.58rem; letter-spacing:.1em; color:var(--grey-light); margin-bottom:6px; }
+.pc-price span { color:var(--gold-light); font-weight:500; }
+.pc-btn { margin-top:6px; background:transparent; border:1px solid rgba(201,168,76,.5); color:var(--gold); padding:14px 20px; font-size:.52rem; letter-spacing:.26em; text-transform:uppercase; font-family:'Raleway',sans-serif; transition:all .3s; width:100%; cursor:pointer; text-align:center; }
+.pc-btn:hover { background:var(--gold); color:var(--black); border-color:var(--gold); }
+
+.no-results { text-align:center; padding:80px 20px; color:var(--grey); font-size:.72rem; letter-spacing:.1em; }
+
+/* MOBILE — 1 column, full image no crop */
+@media(max-width:768px){
+  .product-grid { grid-template-columns:1fr; gap:2px; }
+  .pc-info { padding:16px 18px 22px; gap:5px; }
+  .pc-name { font-size:1.1rem; }
+  .pc-btn { font-size:.48rem; padding:13px 16px; }
+  .related-grid { grid-template-columns:1fr; }
+  .rel-img { height:180px; }
+  .rel-info { padding:14px 16px 16px; }
+  .rel-name { font-size:.72rem; }
+  .rel-price-sm { font-size:.58rem; }
+  .rel-add-btn { font-size:.52rem; padding:10px 8px; }
+  .rel-qty { height:38px; }
+  .rel-qb { padding:8px 14px; font-size:1rem; }
+  .rel-qv { font-size:.52rem; }
+}
+
+/* CAC STRIP */
+.cac-strip { background:var(--mid-purple); border-top:1px solid rgba(201,168,76,.15); border-bottom:1px solid rgba(201,168,76,.15); }
+.cac-img-full { width:100%; height:320px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:rgba(201,168,76,.04); border-bottom:1px solid rgba(201,168,76,.15); position:relative; }
+.cac-img-full img { width:100%; height:100%; object-fit:contain; display:none; }
+.cac-img-full img.loaded { display:block; }
+.cac-ph { text-align:center; }
+.cac-ph-icon { font-size:2.5rem; display:block; margin-bottom:10px; }
+.cac-ph-text { font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); opacity:.6; }
+.cac-content { padding:56px 44px; }
+.cac-title { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,3vw,2.2rem); margin-bottom:14px; }
+.cac-title em { font-style:italic; color:var(--gold); }
+.cac-text { font-size:.68rem; line-height:2; color:var(--grey-light); max-width:640px; }
+@media(max-width:768px){ .cac-img-full{height:220px;} .cac-content{padding:40px 20px;} }
+
+/* WHY */
+.why { padding:110px 44px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.why-items { margin-top:44px; }
+.why-item { display:flex; gap:22px; align-items:flex-start; padding:32px 0; border-bottom:1px solid rgba(201,168,76,.1); }
+.why-item:first-child { padding-top:0; }
+.why-item:last-child { border-bottom:none; }
+.why-num { font-family:'Playfair Display',serif; font-size:2.5rem; color:rgba(201,168,76,.12); line-height:1; flex-shrink:0; width:52px; font-style:italic; }
+.why-info h3 { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:400; margin-bottom:8px; }
+.why-info p { font-size:.68rem; line-height:2; color:var(--grey-light); }
+.why-visual { display:flex; align-items:center; justify-content:center; }
+.why-big { font-family:'Playfair Display',serif; font-size:clamp(4rem,9vw,9rem); font-weight:400; font-style:italic; line-height:.88; color:transparent; -webkit-text-stroke:1px rgba(201,168,76,.2); user-select:none; text-align:right; }
+.why-big span:nth-child(2) { color:rgba(201,168,76,.1); -webkit-text-stroke:none; padding-left:48px; display:block; }
+@media(max-width:768px){ .why{grid-template-columns:1fr;padding:72px 20px;} .why-visual{display:none;} }
+
+/* DELIVERY */
+.delivery { display:flex; align-items:stretch; border-top:1px solid rgba(201,168,76,.15); border-bottom:1px solid rgba(201,168,76,.15); background:var(--deep-purple); }
+.d-item { flex:1; padding:52px 24px; text-align:center; border-right:1px solid rgba(201,168,76,.12); transition:background .3s; }
+.d-item:last-child { border-right:none; }
+.d-item:hover { background:rgba(201,168,76,.04); }
+.d-icon { font-size:1.6rem; display:block; margin-bottom:14px; }
+.d-title { font-family:'Playfair Display',serif; font-size:1rem; color:var(--gold); margin-bottom:8px; font-style:italic; }
+.d-text { font-size:.6rem; color:var(--grey); line-height:1.9; }
+@media(max-width:768px){ .delivery{flex-direction:column;} .d-item{border-right:none;border-bottom:1px solid rgba(201,168,76,.12);padding:36px 20px;} .d-item:last-child{border-bottom:none;} }
+
+/* FOOTER */
+footer { padding:100px 44px 48px; position:relative; }
+footer::before { content:''; position:absolute; top:0; left:44px; right:44px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+.footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:72px; margin-bottom:72px; }
+.footer-brand { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--gold); margin-bottom:16px; font-style:italic; }
+.footer-tagline { font-size:.65rem; color:var(--grey); line-height:2.1; max-width:260px; margin-bottom:28px; }
+.footer-socials { display:flex; gap:12px; }
+.soc { width:34px; height:34px; border:1px solid rgba(201,168,76,.28); display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:.62rem; text-decoration:none; transition:all .3s; font-weight:500; }
+.soc:hover { background:var(--gold); color:var(--black); }
+.fcol h4 { font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:22px; }
+.fcol ul { list-style:none; }
+.fcol li { font-size:.63rem; color:var(--grey); margin-bottom:11px; line-height:1.7; transition:color .3s; }
+.fcol li:hover { color:var(--white); }
+.footer-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:28px; border-top:1px solid rgba(255,255,255,.06); flex-wrap:wrap; gap:12px; }
+.footer-copy { font-size:.52rem; color:rgba(138,128,144,.45); letter-spacing:.08em; }
+.footer-reg { font-size:.52rem; color:var(--gold); opacity:.55; letter-spacing:.14em; }
+@media(max-width:768px){ footer{padding:72px 20px 36px;} footer::before{left:20px;right:20px;} .footer-grid{grid-template-columns:1fr;gap:36px;} .footer-bottom{flex-direction:column;align-items:flex-start;} }
+
+/* POPUP */
+.pop-overlay { position:fixed; inset:0; z-index:800; background:rgba(4,2,8,.9); backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition:all .4s; padding:20px; }
+.pop-overlay.active { opacity:1; visibility:visible; }
+.pop { background:var(--deep-purple); border:1px solid rgba(201,168,76,.28); width:100%; max-width:500px; padding:52px 44px; position:relative; transform:translateY(18px); transition:transform .4s; max-height:90vh; overflow-y:auto; }
+.pop-overlay.active .pop { transform:translateY(0); }
+.pop::before { content:''; position:absolute; top:-1px; left:36px; right:36px; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+.pop-x { position:absolute; top:18px; right:22px; background:none; border:none; color:var(--grey); font-size:1.1rem; transition:color .3s; padding:4px 8px; }
+.pop-x:hover { color:var(--gold); }
+.pop-eye { font-size:.5rem; letter-spacing:.42em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+.pop-title { font-family:'Playfair Display',serif; font-size:1.9rem; font-weight:400; line-height:1.1; margin-bottom:8px; }
+.pop-title em { font-style:italic; color:var(--gold); }
+.pop-sub { font-size:.63rem; color:var(--grey); line-height:1.9; margin-bottom:28px; }
+.pop-selected { font-size:.58rem; color:var(--gold); letter-spacing:.18em; text-transform:uppercase; padding:11px 14px; margin-bottom:28px; border:1px solid rgba(201,168,76,.22); background:rgba(201,168,76,.06); }
+.fg { margin-bottom:18px; }
+.fl { display:block; font-size:.5rem; letter-spacing:.28em; text-transform:uppercase; color:var(--grey); margin-bottom:9px; }
+.fi { width:100%; background:rgba(255,255,255,.04); border:1px solid rgba(201,168,76,.2); color:var(--white); padding:13px 14px; font-size:.68rem; font-family:'Raleway',sans-serif; font-weight:300; outline:none; transition:border-color .3s; appearance:none; }
+.fi:focus { border-color:var(--gold); }
+.fi option { background:#1e1035; color:var(--white); }
+.pop-btn { width:100%; background:var(--gold); color:var(--black); border:none; padding:17px; font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; font-family:'Raleway',sans-serif; font-weight:500; margin-top:8px; transition:all .3s; cursor:pointer; }
+.pop-btn:hover { background:var(--gold-light); transform:translateY(-2px); }
+.pop-note { font-size:.48rem; color:rgba(138,128,144,.45); text-align:center; margin-top:13px; letter-spacing:.1em; }
+@media(max-width:480px){ .pop{padding:40px 22px;} }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.reveal { opacity:0; transform:translateY(36px); transition:opacity .75s ease,transform .75s ease; }
+.reveal-l { opacity:0; transform:translateX(-36px); transition:opacity .75s ease,transform .75s ease; }
+.reveal-r { opacity:0; transform:translateX(36px); transition:opacity .75s ease,transform .75s ease; }
+.reveal.vis,.reveal-l.vis,.reveal-r.vis { opacity:1; transform:translate(0); }
+
+/* CART BUTTON IN NAV */
+.cart-btn { position:relative; background:none; border:1px solid rgba(201,168,76,.4); color:var(--gold); width:42px; height:42px; font-size:1.1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .3s; flex-shrink:0; }
+.cart-btn:hover { background:var(--gold); color:var(--black); }
+.cart-badge { position:absolute; top:-8px; right:-8px; background:var(--gold); color:var(--black); font-size:.55rem; font-weight:700; font-family:'Raleway',sans-serif; min-width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; padding:0 4px; opacity:0; transform:scale(0); transition:all .3s; }
+.cart-badge.show { opacity:1; transform:scale(1); }
+
+/* TOAST NOTIFICATION */
+.toast { position:fixed; top:80px; right:20px; z-index:9000; background:var(--deep-purple); border:1px solid var(--gold); border-left:4px solid var(--gold); padding:16px 20px; min-width:280px; max-width:340px; transform:translateX(120%); transition:transform .4s cubic-bezier(.25,.46,.45,.94); pointer-events:none; }
+.toast.show { transform:translateX(0); }
+.toast-top { font-size:.48rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; font-weight:600; }
+.toast-name { font-family:'Playfair Display',serif; font-size:.95rem; color:var(--white); margin-bottom:4px; }
+.toast-count { font-size:.58rem; color:var(--grey-light); letter-spacing:.08em; }
+
+/* CART DRAWER */
+.cart-overlay { position:fixed; inset:0; z-index:700; background:rgba(4,2,8,.85); backdrop-filter:blur(8px); opacity:0; visibility:hidden; transition:all .35s; }
+.cart-overlay.active { opacity:1; visibility:visible; }
+.cart-drawer { position:fixed; top:0; right:0; bottom:0; width:100%; max-width:420px; background:var(--deep-purple); border-left:1px solid rgba(201,168,76,.25); z-index:701; transform:translateX(100%); transition:transform .4s cubic-bezier(.25,.46,.45,.94); display:flex; flex-direction:column; }
+.cart-overlay.active .cart-drawer { transform:translateX(0); }
+.cart-head { padding:28px 24px 20px; border-bottom:1px solid rgba(201,168,76,.15); display:flex; justify-content:space-between; align-items:center; }
+.cart-head-title { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--gold); }
+.cart-head-count { font-size:.55rem; letter-spacing:.2em; color:var(--grey); text-transform:uppercase; margin-top:4px; }
+.cart-x { background:none; border:none; color:var(--grey); font-size:1.2rem; cursor:pointer; transition:color .3s; }
+.cart-x:hover { color:var(--gold); }
+.cart-items { flex:1; overflow-y:auto; padding:20px 24px; display:flex; flex-direction:column; gap:16px; }
+.cart-empty { text-align:center; padding:60px 20px; color:var(--grey); font-size:.68rem; letter-spacing:.1em; line-height:2; }
+.ci { display:flex; gap:14px; align-items:flex-start; padding-bottom:16px; border-bottom:1px solid rgba(201,168,76,.1); }
+.ci:last-child { border-bottom:none; }
+.ci-img { width:64px; height:64px; object-fit:cover; flex-shrink:0; background:rgba(201,168,76,.08); }
+.ci-info { flex:1; }
+.ci-cat { font-size:.42rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); opacity:.8; }
+.ci-name { font-family:'Playfair Display',serif; font-size:.85rem; color:var(--white); margin:3px 0 8px; line-height:1.2; }
+.ci-price { font-size:.55rem; color:var(--gold-light); }
+.ci-qty { display:flex; align-items:center; gap:10px; margin-top:8px; }
+.ci-qty-btn { background:rgba(201,168,76,.12); border:1px solid rgba(201,168,76,.3); color:var(--gold); width:28px; height:28px; font-size:.9rem; cursor:pointer; transition:all .3s; display:flex; align-items:center; justify-content:center; font-weight:600; }
+.ci-qty-btn:hover { background:var(--gold); color:var(--black); }
+.ci-qty-val { font-size:.72rem; color:var(--white); min-width:20px; text-align:center; font-weight:500; }
+.ci-remove { background:none; border:none; color:rgba(138,128,144,.5); font-size:.7rem; cursor:pointer; margin-left:auto; transition:color .3s; padding:2px 6px; }
+.ci-remove:hover { color:#e05; }
+.cart-foot { padding:20px 24px 28px; border-top:1px solid rgba(201,168,76,.15); }
+.cart-foot-note { font-size:.55rem; color:var(--grey); letter-spacing:.1em; margin-bottom:16px; line-height:1.8; }
+.cart-wa-btn { width:100%; background:var(--gold); color:var(--black); border:none; padding:16px; font-size:.56rem; letter-spacing:.28em; text-transform:uppercase; font-family:'Raleway',sans-serif; font-weight:600; cursor:pointer; transition:all .3s; }
+.cart-wa-btn:hover { background:var(--gold-light); transform:translateY(-2px); }
+.cart-clear { width:100%; background:none; border:1px solid rgba(201,168,76,.2); color:var(--grey); padding:11px; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; font-family:'Raleway',sans-serif; cursor:pointer; margin-top:10px; transition:all .3s; }
+.cart-clear:hover { border-color:rgba(201,168,76,.5); color:var(--white); }
+
+/* CART SUGGESTIONS */
+.cart-suggestions { padding:16px 24px 4px; border-top:1px solid rgba(201,168,76,.15); background:rgba(201,168,76,.03); }
+.cart-sug-title { font-size:.46rem; letter-spacing:.34em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; opacity:.85; }
+.cart-sug-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.cart-sug-card { background:rgba(255,255,255,.03); border:1px solid rgba(201,168,76,.15); cursor:pointer; transition:all .3s; overflow:hidden; }
+.cart-sug-card:hover { border-color:rgba(201,168,76,.6); background:rgba(201,168,76,.07); }
+.cart-sug-img { width:100%; height:110px; object-fit:cover; display:block; background:rgba(201,168,76,.06); }
+.cart-sug-info { padding:9px 10px 11px; }
+.cart-sug-name { font-size:.48rem; color:var(--white); line-height:1.3; margin-bottom:3px; font-family:'Playfair Display',serif; }
+.cart-sug-price { font-size:.4rem; color:var(--gold); letter-spacing:.08em; margin-bottom:5px; }
+.cart-sug-cta { font-size:.38rem; letter-spacing:.16em; text-transform:uppercase; color:var(--grey-light); transition:color .2s; }
+.cart-sug-card:hover .cart-sug-cta { color:var(--gold); }
+
+
+.pc-btn.in-cart { background:rgba(201,168,76,.15); border-color:var(--gold); color:var(--gold); }
+.pc-btn-qty { display:flex; align-items:center; justify-content:center; gap:0; width:100%; margin-top:6px; border:1px solid var(--gold); }
+.pc-btn-qty .qb { background:rgba(201,168,76,.12); border:none; color:var(--gold); font-size:1rem; cursor:pointer; padding:10px 14px; font-weight:700; transition:all .3s; flex-shrink:0; }
+.pc-btn-qty .qb:hover { background:var(--gold); color:var(--black); }
+.pc-btn-qty .qv { font-size:.5rem; letter-spacing:.18em; color:var(--white); flex:1; text-align:center; text-transform:uppercase; padding:10px 4px; background:rgba(201,168,76,.06); }
+.pc-btn-qty .qv.cart-open-hint { cursor:pointer; transition:background .25s,color .25s; }
+.pc-btn-qty .qv.cart-open-hint:hover { background:rgba(201,168,76,.18); color:var(--gold); }
+
+/* RELATED PRODUCTS */
+.related { margin-top:32px; padding-top:24px; border-top:1px solid rgba(201,168,76,.15); }
+.related-title { font-size:.5rem; letter-spacing:.32em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+.related-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.rel-card { background:rgba(255,255,255,.03); border:1px solid rgba(201,168,76,.15); transition:all .3s; overflow:hidden; }
+.rel-card:hover { border-color:rgba(201,168,76,.5); background:rgba(201,168,76,.04); }
+.rel-img { width:100%; height:120px; object-fit:cover; display:block; background:rgba(201,168,76,.08); filter:brightness(1.1) saturate(1.2); }
+.rel-info { padding:10px 12px 12px; }
+.rel-name { font-size:.52rem; color:var(--white); line-height:1.3; margin-bottom:3px; font-family:'Playfair Display',serif; }
+.rel-price-sm { font-size:.42rem; color:var(--gold-light); letter-spacing:.06em; margin-bottom:7px; }
+/* Add to cart button */
+.rel-add-btn { width:100%; background:transparent; border:1px solid rgba(201,168,76,.4); color:var(--gold); padding:6px 4px; font-size:.38rem; letter-spacing:.18em; text-transform:uppercase; font-family:'Raleway',sans-serif; cursor:pointer; transition:all .3s; }
+.rel-add-btn:hover { background:var(--gold); color:var(--black); border-color:var(--gold); }
+.rel-add-btn.flashing { background:rgba(201,168,76,.2); color:var(--gold); }
+/* Inline qty controls */
+.rel-qty { display:flex; align-items:center; border:1px solid var(--gold); }
+.rel-qb { background:rgba(201,168,76,.12); border:none; color:var(--gold); font-size:.85rem; cursor:pointer; padding:5px 8px; font-weight:700; transition:all .3s; flex-shrink:0; line-height:1; }
+.rel-qb:hover { background:var(--gold); color:var(--black); }
+.rel-qv { font-size:.38rem; letter-spacing:.12em; color:var(--white); flex:1; text-align:center; padding:5px 2px; background:rgba(201,168,76,.06); text-transform:uppercase; white-space:nowrap; overflow:hidden; }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Mercyked Collections</div>
+  <ul class="nav-links">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#why">Wholesale</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <button class="cart-btn" onclick="openCart()" title="View Cart">
+      🛍
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+    <a href="#" class="nav-cta" onclick="openPop('Our Finest Fabric');return false;">Claim a Fabric</a>
+  </div>
+</nav>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-top">Added to Cart</div>
+  <div class="toast-name" id="toastName"></div>
+  <div class="toast-count" id="toastCount"></div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()">
+  <div class="cart-drawer">
+    <div class="cart-head">
+      <div>
+        <div class="cart-head-title">Your Cart</div>
+        <div class="cart-head-count" id="cartHeadCount">0 items</div>
+      </div>
+      <button class="cart-x" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">Your cart is empty.<br>Browse fabrics and add them here.</div>
+    </div>
+    <div class="cart-suggestions" id="cartSuggestions" style="display:none"></div>
+    <div class="cart-foot">
+      <p class="cart-foot-note">Your full order will be sent as one WhatsApp message. Our team will confirm availability and pricing.</p>
+      <button class="cart-wa-btn" onclick="sendCartWA()">Send Order via WhatsApp</button>
+      <button class="cart-clear" onclick="clearCart()">Clear Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lace"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Home of Aso-Ebi Fabric · Lagos Island, Nigeria</p>
+    <h1 class="hero-title">Draped<br>in <em>Pure</em><br><span class="outline">Luxury.</span></h1>
+    <p class="hero-sub">Premium Aso-Ebi fabrics for those who refuse to be ordinary. Wholesale &amp; retail. Delivered worldwide.</p>
+    <div class="hero-actions">
+      <a href="#collections" class="btn-gold">Explore Collections</a>
+      <a href="#why" class="btn-outline">Wholesale Enquiry →</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="h-stat"><span class="h-stat-val">Worldwide</span><span class="h-stat-label">Delivery</span></div>
+    <div class="h-stat"><span class="h-stat-val">Trusted</span><span class="h-stat-label">By Many</span></div>
+    <div class="h-stat"><span class="h-stat-val">CAC</span><span class="h-stat-label">Registered</span></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="m-item">Cord Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Applique Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Swiss Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Velvet Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Beaded Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Swarovski</span><span class="m-sep">✦</span>
+    <span class="m-item">Damask &amp; Organza</span><span class="m-sep">✦</span>
+    <span class="m-item">Atiku Fabric</span><span class="m-sep">✦</span>
+    <span class="m-item">Flocking Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Tissue Net Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Wholesale &amp; Retail</span><span class="m-sep">✦</span>
+    <span class="m-item">Cord Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Applique Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Swiss Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Velvet Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Beaded Lace</span><span class="m-sep">✦</span>
+    <span class="m-item">Swarovski</span><span class="m-sep">✦</span>
+    <span class="m-item">Damask &amp; Organza</span><span class="m-sep">✦</span>
+    <span class="m-item">Atiku Fabric</span><span class="m-sep">✦</span>
+    <span class="m-item">Wholesale &amp; Retail</span><span class="m-sep">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="reveal-l">
+    <span class="about-label">Our Story</span>
+    <h2 class="about-title">Where Every Fabric<br>Tells a <em>Story</em></h2>
+    <p class="about-text">Located in the heart of Idumota, Lagos Island, Mercyked Collections is Lagos' trusted destination for premium Aso-Ebi fabrics. From intimate ceremonies to grand owambe celebrations, we dress Nigeria's most memorable moments in style.<br><br>Every piece is carefully sourced, from the intricate detail of Cord Lace to the dazzling shimmer of Swarovski Velvet. We proudly serve both retail buyers and wholesale clients, men and women, with the same dedication to excellence.</p>
+    <div class="about-badges">
+      <div class="badge">CAC Registered</div>
+      <div class="badge">Wholesale &amp; Retail</div>
+      <div class="badge">Worldwide Delivery</div>
+      <div class="badge">10+ Fabric Types</div>
+    </div>
+  </div>
+  <div class="about-right reveal-r">
+    <div class="about-frame">
+      <img src="images/store.jpg" alt="Mercyked Collections Store" onerror="this.style.display='none'">
+      <div class="about-frame-ph">Mercyked<br>Collections</div>
+    </div>
+    <div class="about-border"></div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="collections" id="collections">
+  <div class="sec-header reveal">
+    <div>
+      <p class="sec-label">Our Fabrics</p>
+      <h2 class="sec-title">The <em>Collection</em></h2>
+    </div>
+  </div>
+
+  <div class="catalog-controls reveal">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search fabrics — e.g. cord lace, velvet, swiss...">
+    </div>
+    <div class="filter-wrap" id="filterWrap">
+      <button class="filter-btn active" data-cat="all">All</button>
+      <button class="filter-btn" data-cat="Cord Lace">Cord Lace</button>
+      <button class="filter-btn" data-cat="Applique Lace">Applique Lace</button>
+      <button class="filter-btn" data-cat="Swiss Lace">Swiss Lace</button>
+      <button class="filter-btn" data-cat="Velvet Lace">Velvet Lace</button>
+      <button class="filter-btn" data-cat="Beaded Lace">Beaded Lace</button>
+      <button class="filter-btn" data-cat="Swarovski">Swarovski</button>
+      <button class="filter-btn" data-cat="Damask & Organza">Damask &amp; Organza</button>
+      <button class="filter-btn" data-cat="Atiku Fabric">Atiku Fabric</button>
+      <button class="filter-btn" data-cat="Flocking Lace">Flocking Lace</button>
+      <button class="filter-btn" data-cat="Tissue Net Lace">Tissue Net Lace</button>
+    </div>
+    <p class="results-count" id="resultsCount"></p>
+  </div>
+
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<!-- CAC STRIP -->
+<section class="cac-strip reveal" id="cac">
+  <div class="cac-img-full">
+    <img src="images/cac-certificate.jpg" alt="CAC Certificate" onload="this.classList.add('loaded');this.nextElementSibling.style.display='none';" onerror="this.style.display='none'">
+    <div class="cac-ph">
+      <span class="cac-ph-icon">🏛️</span>
+      <p class="cac-ph-text">CAC Certificate</p>
+    </div>
+  </div>
+  <div class="cac-content">
+    <p class="sec-label">Officially Verified</p>
+    <h2 class="cac-title">A Business You Can<br><em>Trust Completely</em></h2>
+    <p class="cac-text">Mercyked Collections is a fully registered Nigerian business with the Corporate Affairs Commission. When you order from us, you are dealing with a legitimate, accountable business — not just a vendor.</p>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="reveal-l">
+    <p class="sec-label">Why Choose Us</p>
+    <h2 class="sec-title">Fabric That <em>Elevates</em><br>Every Occasion</h2>
+    <div class="why-items">
+      <div class="why-item">
+        <span class="why-num">01</span>
+        <div class="why-info"><h3>Premium Sourcing</h3><p>Every fabric is hand-selected for quality and beauty. Only the finest pieces make it into our collection — for men and women alike.</p></div>
+      </div>
+      <div class="why-item">
+        <span class="why-num">02</span>
+        <div class="why-info"><h3>Wholesale &amp; Retail</h3><p>Whether you're dressing for one celebration or stocking your boutique, we serve every scale with equal commitment and care.</p></div>
+      </div>
+      <div class="why-item">
+        <span class="why-num">03</span>
+        <div class="why-info"><h3>Worldwide Delivery</h3><p>From Idumota to the UK, USA, Canada and beyond. Your chosen fabrics arrive safely wherever you are in the world.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="why-visual reveal-r">
+    <div class="why-big"><span>Pure</span><span>Luxury</span></div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<div class="delivery reveal">
+  <div class="d-item"><span class="d-icon">🏛️</span><div class="d-title">CAC Registered</div><div class="d-text">Officially registered<br>Nigerian business</div></div>
+  <div class="d-item"><span class="d-icon">📦</span><div class="d-title">Worldwide Delivery</div><div class="d-text">UK, USA, Canada<br>&amp; beyond</div></div>
+  <div class="d-item"><span class="d-icon">🏪</span><div class="d-title">Physical Store</div><div class="d-text">12/14 Agoro Lane, Ereko St<br>Idumota, Lagos Island</div></div>
+  <div class="d-item"><span class="d-icon">💬</span><div class="d-title">Instant Response</div><div class="d-text">WhatsApp us anytime<br>08178349719</div></div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Mercyked Collections</div>
+      <p class="footer-tagline">Home of premium Aso-Ebi fabrics in Lagos. Dressing Nigeria's most beautiful celebrations — for men and women.</p>
+      <div class="footer-socials">
+        <a href="https://instagram.com/mercyked_collections" class="soc" target="_blank">ig</a>
+        <a href="https://wa.me/2348178349719" class="soc" target="_blank">wa</a>
+        <a href="#" class="soc">fb</a>
+      </div>
+    </div>
+    <div class="fcol">
+      <h4>Collections</h4>
+      <ul>
+        <li>Cord Lace</li>
+        <li>Applique Lace</li>
+        <li>Swiss Lace</li>
+        <li>Velvet Lace</li>
+        <li>Beaded Lace</li>
+        <li>Swarovski</li>
+        <li>Damask &amp; Organza</li>
+        <li>Atiku Fabric</li>
+        <li>Flocking Lace</li>
+        <li>Tissue Net Lace</li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Contact Us</h4>
+      <ul>
+        <li>📍 12/14 Agoro Lane<br>Ereko Street, Idumota<br>Lagos Island, Lagos</li>
+        <li>📞 08178349719</li>
+        <li>📞 07036053152</li>
+        <li>💬 WhatsApp Available</li>
+        <li>🌍 Worldwide Delivery</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Mercyked Collections. All rights reserved.</p>
+    <p class="footer-reg">CAC Registered · Lagos, Nigeria</p>
+  </div>
+</footer>
+
+<!-- POPUP -->
+<div class="pop-overlay" id="popOv">
+  <div class="pop">
+    <button class="pop-x" onclick="closePop()">✕</button>
+    <p class="pop-eye">Reserve Your Fabric</p>
+    <h2 class="pop-title">Claim <em>Yours</em><br>Today</h2>
+    <p class="pop-sub">Fill in your details and we'll connect you directly with our team on WhatsApp — ready to assist you instantly.</p>
+    <div class="pop-selected" id="popSel">Selected: Cord Lace</div>
+    <div class="fg">
+      <label class="fl">Fabric Type</label>
+      <select class="fi" id="pFabric">
+        <option>Cord Lace</option>
+        <option>Applique Lace</option>
+        <option>Swiss Lace</option>
+        <option>Velvet Lace</option>
+        <option>Beaded Lace</option>
+        <option>Swarovski Lace</option>
+        <option>Damask / Organza</option>
+        <option>Atiku Fabric</option>
+        <option>Flocking Lace</option>
+        <option>Tissue Net Lace</option>
+        <option>Other — I'll describe on WhatsApp</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label class="fl">How Many Yards?</label>
+      <select class="fi" id="pYards">
+        <option>5 yards (standard)</option>
+        <option>10 yards</option>
+        <option>20+ yards (wholesale)</option>
+        <option>I'm not sure yet</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label class="fl">Preferred Color</label>
+      <input type="text" class="fi" id="pColor" placeholder="e.g. Royal blue, Deep purple, Champagne gold...">
+    </div>
+    <div class="fg">
+      <label class="fl">Delivery Address</label>
+      <input type="text" class="fi" id="pAddr" placeholder="e.g. Victoria Island Lagos / London UK / Houston USA...">
+    </div>
+    <button class="pop-btn" id="popAddCart" onclick="addCurrentToCart()">Add to Cart</button>
+    <button class="pop-btn" style="margin-top:10px;background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold);" onclick="sendWA()">Send Single Request via WhatsApp</button>
+    <p class="pop-note">Add to cart to order multiple fabrics in one WhatsApp message</p>
+    <div class="related" id="relatedSection">
+      <div class="related-title">You May Also Like</div>
+      <div class="related-grid" id="relatedGrid"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── PRODUCT DATABASE ──
+const SUPABASE_URL = 'https://hvlpwhqggmegkzxataml.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2bHB3aHFnZ21lZ2t6eGF0YW1sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2OTg3MTgsImV4cCI6MjA5NTI3NDcxOH0.xjNYkv9Ie6v2XM0kNlFj4I6a4qHX9-mrY_6HuszQXww';
+let products = [];
+
+async function loadFromSupabase() {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/products?select=*&order=id.asc`, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY
+      }
+    });
+    const data = await res.json();
+    if (Array.isArray(data) && data.length > 0) {
+      products = data.map(p => ({
+        name: p.name || '',
+        cat: p.cat || '',
+        price: p.price || 'Price on request',
+        img: p.img || ''
+      })).filter(p => p.name && p.cat);
+    }
+  } catch(e) {
+    console.error('Supabase fetch failed:', e);
+  }
+  loadfromsupabase();
+}
+
+// ── CART ──
+let cart = [];
+let currentPopProduct = null;
+let toastTimer = null;
+
+function totalCartItems(){
+  return cart.reduce((s,i)=>s+i.qty,0);
+}
+
+function updateCartBadge(){
+  const total = totalCartItems();
+  const badge = document.getElementById('cartBadge');
+  badge.textContent = total;
+  badge.classList.toggle('show', total > 0);
+}
+
+function showToast(name, qty){
+  const total = totalCartItems();
+  document.getElementById('toastName').textContent = name + ' · ' + qty + (qty===1?' yard':' yards');
+  document.getElementById('toastCount').textContent = 'You have ' + total + ' item' + (total!==1?'s':'') + ' in your cart';
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  if(toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 3500);
+}
+
+function addToCart(productName, qty){
+  const p = products.find(x=>x.name===productName);
+  if(!p) return;
+  const existing = cart.find(x=>x.name===productName);
+  if(existing){
+    existing.qty += qty;
+  } else {
+    cart.push({...p, qty});
+  }
+  updateCartBadge();
+  renderCartDrawer();
+  renderProducts(); // refresh card states
+  showToast(productName, qty);
+}
+
+function removeFromCart(name){
+  cart = cart.filter(x=>x.name!==name);
+  updateCartBadge();
+  renderCartDrawer();
+  renderProducts();
+}
+
+function changeCartQty(name, delta){
+  const item = cart.find(x=>x.name===name);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0){ removeFromCart(name); return; }
+  updateCartBadge();
+  renderCartDrawer();
+  renderProducts(); // live-update the card button qty
+}
+
+function clearCart(){
+  cart = [];
+  updateCartBadge();
+  renderCartDrawer();
+  renderProducts();
+}
+
+function openCart(){
+  document.getElementById('cartOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+
+function closeCart(){
+  document.getElementById('cartOverlay').classList.remove('active');
+  document.body.style.overflow='';
+}
+
+function renderCartDrawer(){
+  const el = document.getElementById('cartItems');
+  const countEl = document.getElementById('cartHeadCount');
+  const sugEl = document.getElementById('cartSuggestions');
+  const total = totalCartItems();
+  countEl.textContent = total + ' item' + (total!==1?'s':'');
+  if(cart.length===0){
+    el.innerHTML='<div class="cart-empty">Your cart is empty.<br>Browse fabrics and add them here.</div>';
+    sugEl.style.display='none';
+    return;
+  }
+  el.innerHTML = cart.map(item=>`
+    <div class="ci">
+      <img class="ci-img" src="images/${item.img}" alt="${item.name}" onerror="this.style.opacity='0'">
+      <div class="ci-info">
+        <div class="ci-cat">${item.cat}</div>
+        <div class="ci-name">${item.name}</div>
+        <div class="ci-price">${item.price}</div>
+        <div class="ci-qty">
+          <button class="ci-qty-btn" onclick="changeCartQty('${item.name.replace(/'/g,"\\'")}', -1)">-</button>
+          <span class="ci-qty-val">${item.qty} yard${item.qty!==1?'s':''}</span>
+          <button class="ci-qty-btn" onclick="changeCartQty('${item.name.replace(/'/g,"\\'")}', 1)">+</button>
+          <button class="ci-remove" onclick="removeFromCart('${item.name.replace(/'/g,"\\'")}')">Remove</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Build suggestions: same category as any cart item, max 3
+  const cartCats = [...new Set(cart.map(i=>i.cat))];
+  const suggestions = products.filter(p => cartCats.includes(p.cat)).slice(0,3);
+  if(suggestions.length > 0){
+    sugEl.style.display = 'block';
+    sugEl.innerHTML = `
+      <div class="cart-sug-title">You May Also Like</div>
+      <div class="cart-sug-grid">
+        ${suggestions.map(s=>{
+          const inCart = cart.find(x=>x.name===s.name);
+          const safeName = s.name.replace(/'/g,"\\'");
+          const ctaHTML = inCart
+            ? `<div class="rel-qty"><button class="rel-qb" onclick="changeSugQty('${safeName}',-1,this)">−</button><span class="rel-qv">${inCart.qty} yard${inCart.qty>1?'s':''} in cart</span><button class="rel-qb" onclick="changeSugQty('${safeName}',1,this)">+</button></div>`
+            : `<button class="rel-add-btn" onclick="addSugToCart('${safeName}',this)">Add to Cart</button>`;
+          return `<div class="cart-sug-card" data-sug-name="${safeName}"><img class="cart-sug-img" src="images/${s.img}" alt="${s.name}" onerror="this.style.opacity='0'"><div class="cart-sug-info"><div class="cart-sug-name">${s.name}</div><div class="cart-sug-price">${s.price}</div><div class="cart-sug-cta">${ctaHTML}</div></div></div>`;
+        }).join('')}
+      </div>
+    `;
+  } else {
+    sugEl.style.display = 'none';
+  }
+}
+
+function sendCartWA(){
+  if(cart.length===0) return;
+  const addr = document.getElementById('pAddr').value || 'Not specified';
+  const color = document.getElementById('pColor').value || 'Not specified';
+  let lines = cart.map(i=>`- ${i.name} x${i.qty} yard${i.qty>1?'s':''} (${i.price})`).join('\n');
+  const msg = `Hello Mercyked Collections,\n\nI would like to order the following fabrics:\n\n${lines}\n\nPreferred colour: ${color}\nDelivery address: ${addr}\n\nKindly confirm availability and pricing. Thank you.`;
+  window.open(`https://wa.me/2348178349719?text=${encodeURIComponent(msg)}`,'_blank');
+  closeCart();
+}
+
+// ── RENDER PRODUCTS ──
+const grid = document.getElementById('productGrid');
+const countEl = document.getElementById('resultsCount');
+let activeFilter = 'all';
+let searchTerm = '';
+
+function renderProducts(){
+  const filtered = products.filter(p => {
+    const matchCat = activeFilter === 'all' || p.cat === activeFilter;
+    const matchSearch = searchTerm === '' || p.name.toLowerCase().includes(searchTerm) || p.cat.toLowerCase().includes(searchTerm);
+    return matchCat && matchSearch;
+  });
+
+  grid.innerHTML = '';
+
+  if(filtered.length === 0){
+    grid.innerHTML = '<div class="no-results">No fabrics found. Try a different search or category.</div>';
+    countEl.textContent = '0 fabrics found';
+    return;
+  }
+
+  countEl.textContent = filtered.length + ' fabric' + (filtered.length !== 1 ? 's' : '') + ' found';
+
+  const gradients = [
+    'linear-gradient(135deg,#1e0840 0%,#5a1a9a 50%,#1a0533 100%)',
+    'linear-gradient(135deg,#0d1a0a 0%,#1e5c14 50%,#0d1a0a 100%)',
+    'linear-gradient(135deg,#1a0a00 0%,#7a3000 50%,#1a0a00 100%)',
+    'linear-gradient(135deg,#0a001a 0%,#3d0080 50%,#0a001a 100%)',
+    'linear-gradient(135deg,#1a0000 0%,#8b0000 50%,#1a0000 100%)',
+    'linear-gradient(135deg,#001a33 0%,#0047ab 50%,#001a33 100%)',
+    'linear-gradient(135deg,#1a0a2e 0%,#6b0fa0 50%,#1a0a2e 100%)',
+    'linear-gradient(135deg,#0a1a00 0%,#2d6e00 50%,#0a1a00 100%)',
+    'linear-gradient(135deg,#1a0010 0%,#8b004a 50%,#1a0010 100%)',
+    'linear-gradient(135deg,#001a1a 0%,#006b6b 50%,#001a1a 100%)',
+  ];
+
+  const lacePatterns = [
+    `<svg class="pc-lace" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="lp0" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse"><circle cx="22" cy="22" r="9" fill="none" stroke="white" stroke-width=".5"/><circle cx="22" cy="22" r="16" fill="none" stroke="white" stroke-width=".25"/><circle cx="0" cy="0" r="4" fill="none" stroke="white" stroke-width=".3"/><circle cx="44" cy="44" r="4" fill="none" stroke="white" stroke-width=".3"/></pattern></defs><rect width="200" height="200" fill="url(#lp0)"/></svg>`,
+    `<svg class="pc-lace" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="lp1" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M16 2L30 16L16 30L2 16Z" fill="none" stroke="white" stroke-width=".45"/><circle cx="16" cy="16" r="4" fill="none" stroke="white" stroke-width=".3"/></pattern></defs><rect width="200" height="200" fill="url(#lp1)"/></svg>`,
+    `<svg class="pc-lace" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="lp2" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="3" fill="none" stroke="white" stroke-width=".4"/><circle cx="0" cy="0" r="2" fill="none" stroke="white" stroke-width=".3"/><circle cx="22" cy="22" r="2" fill="none" stroke="white" stroke-width=".3"/></pattern></defs><rect width="200" height="200" fill="url(#lp2)"/></svg>`,
+    `<svg class="pc-lace" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="lp3" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse"><polygon points="14,2 26,8 26,20 14,26 2,20 2,8" fill="none" stroke="white" stroke-width=".4"/></pattern></defs><rect width="200" height="200" fill="url(#lp3)"/></svg>`,
+    `<svg class="pc-lace" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="lp4" x="0" y="0" width="40" height="20" patternUnits="userSpaceOnUse"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" fill="none" stroke="white" stroke-width=".5"/></pattern></defs><rect width="200" height="200" fill="url(#lp4)"/></svg>`,
+  ];
+
+  filtered.forEach((p, i) => {
+    const grad = gradients[i % gradients.length];
+    const lace = lacePatterns[i % lacePatterns.length];
+    const inCart = cart.find(x=>x.name===p.name);
+    const card = document.createElement('div');
+    card.className = 'pc';
+    const btnHTML = inCart
+      ? `<div class="pc-btn-qty">
+           <button class="qb" onclick="event.stopPropagation();changeCartQty('${p.name.replace(/'/g,"\\'")}', -1)">−</button>
+           <span class="qv cart-open-hint" onclick="event.stopPropagation();openCart()" title="View in cart">${inCart.qty} yard${inCart.qty!==1?'s':''} in cart · View →</span>
+           <button class="qb" onclick="event.stopPropagation();changeCartQty('${p.name.replace(/'/g,"\\'")}', 1)">+</button>
+         </div>`
+      : `<button class="pc-btn" onclick="openPop('${p.name.replace(/'/g,"\\'")}')">Add to Cart</button>`;
+    card.innerHTML = `
+      <div class="pc-img-box">
+        <div class="pc-grad" style="background:${grad}"></div>
+        <img class="pc-img" src="images/${p.img}" alt="${p.name}" onerror="this.style.opacity='0'">
+        ${lace}
+      </div>
+      <div class="pc-info">
+        <p class="pc-cat">${p.cat}</p>
+        <h3 class="pc-name">${p.name}</h3>
+        <p class="pc-price">${p.price !== 'Price on request' ? '<span>' + p.price + '</span> · 5 yards' : 'Price on request'}</p>
+        ${btnHTML}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.cat;
+    document.getElementById('searchInput').value = '';
+    searchTerm = '';
+    renderProducts();
+  });
+});
+
+// Search
+document.getElementById('searchInput').addEventListener('input', e => {
+  searchTerm = e.target.value.toLowerCase().trim();
+  if(searchTerm !== ''){
+    activeFilter = 'all';
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.filter-btn[data-cat="all"]').classList.add('active');
+  }
+  renderProducts();
+});
+
+renderProducts();
+
+// ── CURSOR ──
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+if(window.matchMedia('(pointer:fine)').matches){
+  document.addEventListener('mousemove',e=>{
+    cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+    setTimeout(()=>{curR.style.left=e.clientX+'px';curR.style.top=e.clientY+'px';},90);
+  });
+  document.querySelectorAll('a,button,.pc').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';curR.style.width='48px';curR.style.height='48px';});
+    el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';curR.style.width='34px';curR.style.height='34px';});
+  });
+}
+
+// ── SCROLL REVEAL ──
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('vis'),i*70);});
+},{threshold:0.08});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>obs.observe(el));
+
+// ── POPUP ──
+function openPop(name){
+  const p = products.find(x=>x.name===name) || {name,cat:'',price:'',img:''};
+  currentPopProduct = p;
+  document.getElementById('popSel').textContent = 'Selected: ' + name;
+  const sel = document.getElementById('pFabric');
+  for(let i=0;i<sel.options.length;i++){
+    if(sel.options[i].value.toLowerCase().includes(name.toLowerCase().split(' ')[0])){
+      sel.selectedIndex=i; break;
+    }
+  }
+  // Related products — same category, exclude current
+  const related = products.filter(x=>x.cat===p.cat && x.name!==p.name).slice(0,4);
+  const rg = document.getElementById('relatedGrid');
+  if(related.length>0){
+    rg.innerHTML = related.map(r=>{
+      const inCart = cart.find(x=>x.name===r.name);
+      const safeName = r.name.replace(/'/g,"\\'").replace(/"/g,'&quot;');
+      const ctaHTML = inCart
+        ? `<div class="rel-qty">
+             <button class="rel-qb" onclick="changeRelatedQty('${safeName}',-1,this)">−</button>
+             <span class="rel-qv">${inCart.qty} yard${inCart.qty>1?'s':''} in cart</span>
+             <button class="rel-qb" onclick="changeRelatedQty('${safeName}',1,this)">+</button>
+           </div>`
+        : `<button class="rel-add-btn" onclick="addRelatedToCart('${safeName}',this)">Add to Cart</button>`;
+      return `
+        <div class="rel-card" data-rel-name="${safeName}">
+          <img class="rel-img" src="images/${r.img}" alt="${r.name}" onerror="this.style.opacity='0'">
+          <div class="rel-info">
+            <div class="rel-name">${r.name}</div>
+            <div class="rel-price-sm">${r.price}</div>
+            <div class="rel-cta">${ctaHTML}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+    document.getElementById('relatedSection').style.display='block';
+  } else {
+    document.getElementById('relatedSection').style.display='none';
+  }
+  document.getElementById('popOv').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+
+function rerenderRelated(){
+  if(!currentPopProduct) return;
+  const rg = document.getElementById('relatedGrid');
+  if(!rg) return;
+  const related = products.filter(x=>x.cat===currentPopProduct.cat && x.name!==currentPopProduct.name).slice(0,4);
+  if(!related.length) return;
+  rg.innerHTML = related.map(r=>{
+    const inCart = cart.find(x=>x.name===r.name);
+    const safeName = r.name.replace(/'/g,"\\'");
+    const ctaHTML = inCart
+      ? `<div class="rel-qty"><button class="rel-qb" onclick="changeRelatedQty('${safeName}',-1,this)">−</button><span class="rel-qv">${inCart.qty} yard${inCart.qty>1?'s':''} in cart</span><button class="rel-qb" onclick="changeRelatedQty('${safeName}',1,this)">+</button></div>`
+      : `<button class="rel-add-btn" onclick="addRelatedToCart('${safeName}',this)">Add to Cart</button>`;
+    return `<div class="rel-card" data-rel-name="${safeName}"><img class="rel-img" src="images/${r.img}" alt="${r.name}" onerror="this.style.opacity='0'"><div class="rel-info"><div class="rel-name">${r.name}</div><div class="rel-price-sm">${r.price}</div><div class="rel-cta">${ctaHTML}</div></div></div>`;
+  }).join('');
+}
+
+function addRelatedToCart(name, btnEl){
+  addToCart(name, 1);
+  // renderCartDrawer already redraws suggestions; rerender related cards inside popup too
+  rerenderRelated();
+}
+
+function changeRelatedQty(name, delta, btnEl){
+  const existing = cart.find(x=>x.name===name);
+  if(!existing) return;
+  const newQty = existing.qty + delta;
+  if(newQty <= 0){
+    cart = cart.filter(x=>x.name!==name);
+  } else {
+    existing.qty = newQty;
+  }
+  updateCartBadge(); renderCartDrawer(); renderProducts();
+  rerenderRelated();
+}
+
+function addSugToCart(name, btnEl){
+  addToCart(name, 1);
+  // renderCartDrawer called by addToCart will redraw suggestions with qty controls
+}
+
+function changeSugQty(name, delta, btnEl){
+  const existing = cart.find(x=>x.name===name);
+  if(!existing) return;
+  const newQty = existing.qty + delta;
+  if(newQty <= 0){
+    cart = cart.filter(x=>x.name!==name);
+  } else {
+    existing.qty = newQty;
+  }
+  updateCartBadge(); renderCartDrawer(); loadFromSupabase();
+}
+
+function closePop(){
+  document.getElementById('popOv').classList.remove('active');
+  document.body.style.overflow='';
+}
+
+function addCurrentToCart(){
+  if(!currentPopProduct) return;
+  const yards = document.getElementById('pYards');
+  const yardVal = yards ? parseInt(yards.value) || 1 : 1;
+  addToCart(currentPopProduct.name, yardVal);
+  closePop();
+}
+
+document.getElementById('popOv').addEventListener('click',function(e){if(e.target===this)closePop();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){ closePop(); closeCart(); }});
+
+// ── WHATSAPP (single item) ──
+function sendWA(){
+  const fabric=document.getElementById('pFabric').value;
+  const yards=document.getElementById('pYards').value;
+  const color=document.getElementById('pColor').value||'Not specified';
+  const addr=document.getElementById('pAddr').value||'Not specified';
+  const msg=`Hello Mercyked Collections,\n\nI would like to claim the ${fabric}.\n\nQuantity: ${yards}\nPreferred colour: ${color}\nDelivery address: ${addr}\n\nKindly confirm availability and pricing. Thank you.`;
+  window.open(`https://wa.me/2348178349719?text=${encodeURIComponent(msg)}`,'_blank');
+  closePop();
+}
+</script>
+</body>
+</html>
